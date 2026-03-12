@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { directus, readItems } from '../lib/directus';
+
+// Vamos buscar os serviços diretamente do seu Directus na Hostinger!
+const services = await directus.request(
+	readItems('servicos', {
+		fields: ['title', 'slug', 'description', 'icon'],
+	})
+);
+---
+
+<Layout title="Brilho Impecável | Serviços de Limpeza Profissional" description="Especialistas em limpeza doméstica e empresarial. Peça o seu orçamento gratuito hoje.">
+	<main>
+		<!-- Hero Section -->
+		<section class="container section-padding responsive-grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+			<div>
+				<span class="section-label">Empresa de Limpeza em Portugal</span>
+				<h1 style="font-size: 4rem; line-height: 1.1; margin-bottom: 1.5rem;">
+					A Sua Casa <span class="text-gradient">Sempre Impecável</span> Sem Esforço.
+				</h1>
+				<p style="font-size: 1.2rem; color: var(--gray); margin-bottom: 2.5rem; max-width: 550px;">
+					Transformamos o seu espaço com serviços de limpeza profissionais, seguros e adaptados às suas necessidades. Recupere o seu tempo livre!
+				</p>
+				<div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+					<a href="#contacto" class="btn btn-primary" style="padding: 1rem 2rem;">Agendar Agora</a>
+					<a href="#servicos" class="btn" style="padding: 1rem 2rem; background: #fff; border: 1px solid #e2e8f0;">Serviços</a>
+				</div>
+			</div>
+			<div style="position: relative;">
+				<img src="/cleaning_hero_modern.png" alt="Limpeza Profissional" style="width: 100%; border-radius: 2rem; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); object-fit: cover; aspect-ratio: 4/5;" />
+				<div class="card" style="position: absolute; bottom: -20px; left: -20px; padding: 1.5rem; max-width: 250px;">
+					<p style="font-weight: 700; color: var(--primary-dark); margin-bottom: 0.5rem;">⭐ 4.9/5 Estrelas</p>
+					<p style="font-size: 0.875rem; color: var(--gray);">+500 clientes satisfeitos em toda a região.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Services Section -->
+		<section id="servicos" class="container section-padding">
+			<div style="text-align: center; margin-bottom: 4rem;">
+				<span class="section-label">O que fazemos</span>
+				<h2 style="font-size: 2.8rem; margin-bottom: 1rem;">Serviços Especializados</h2>
+				<p style="color: var(--gray); font-size: 1.1rem;">Soluções completas para manter cada canto a brilhar.</p>
+			</div>
+			
+			<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+				{services.map(service => (
+					<div class="card">
+						<div style="font-size: 3rem; margin-bottom: 1.5rem;">{service.icon}</div>
+						<h3 style="font-size: 1.5rem; margin-bottom: 1rem;">{service.title}</h3>
+						<p style="color: var(--gray);">{service.description}</p>
+						<a href={`/servicos/${service.slug}`} style="display: inline-block; margin-top: 1.5rem; color: var(--primary); font-weight: 600; text-decoration: none;">Saber mais →</a>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<!-- CTA Section -->
+		<section style="background: var(--primary); color: white;" class="section-padding">
+			<div class="container" style="text-align: center;">
+				<h2 style="color: white; font-size: 2.5rem; margin-bottom: 1.5rem;">Pronto para ver a sua casa a brilhar?</h2>
+				<p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 2.5rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+					Peça hoje mesmo um orçamento personalizado e gratuito. Sem compromissos, apenas resultados impecáveis.
+				</p>
+				<a href="#contacto" class="btn btn-accent" style="font-size: 1.25rem; padding: 1.25rem 3rem;">Pedir Orçamento Grátis</a>
+			</div>
+		</section>
+	</main>
+</Layout>

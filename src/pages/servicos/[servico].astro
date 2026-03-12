@@ -1,0 +1,96 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { directus, readItems } from '../../lib/directus';
+
+export async function getStaticPaths() {
+  const services = await directus.request(
+    readItems('servicos', {
+      fields: ['slug'],
+    })
+  );
+
+  return services.map((service: any) => ({
+    params: { servico: service.slug },
+  }));
+}
+
+const { servico } = Astro.params;
+
+// Ir buscar os detalhes do serviço atual
+const services = await directus.request(
+  readItems('servicos', {
+    filter: { slug: { _eq: servico } },
+    fields: ['title', 'description', 'icon'],
+    limit: 1,
+  })
+);
+
+const currentService = services[0];
+
+// Fallback preventivo
+if (!currentService) {
+    return Astro.redirect('/#servicos');
+}
+
+// Nota: Como no Directus neste momento não criámos o campo de "features" (lista), 
+// vamos usar uma lista genérica de qualidade ou apenas mostrar a descrição.
+const defaultFeatures = [
+    'Profissionais qualificados e de confiança',
+    'Produtos e equipamentos de limpeza incluídos',
+    'Seguro de responsabilidade civil',
+    'Horário flexível adaptado a si',
+    'Garantia de satisfação Brilho Impecável'
+];
+---
+
+<Layout title={`${currentService.title} | Brilho Impecável`} description={currentService.description}>
+	<main>
+		<!-- Header Page -->
+		<section style="background: var(--primary-dark); padding: 5rem 0; color: white;">
+			<div class="container" style="display: flex; gap: 2rem; align-items: center;">
+                <div style="font-size: 5rem; background: rgba(255,255,255,0.1); width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; border-radius: 1.5rem;">
+                    {currentService.icon}
+                </div>
+                <div>
+                    <h1 style="font-size: 3rem; margin-bottom: 0.5rem; color: white;">{currentService.title}</h1>
+                    <p style="font-size: 1.2rem; opacity: 0.9;">Solução especializada e à sua medida.</p>
+                </div>
+			</div>
+		</section>
+
+		<!-- Content Section -->
+		<section class="container" style="padding: 6rem 0; display: grid; grid-template-columns: 2fr 1fr; gap: 4rem;">
+			<div>
+                <h2 style="font-size: 2rem; margin-bottom: 1.5rem;">Como Funciona o Serviço</h2>
+                <p style="color: var(--gray); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                    {currentService.description}
+                </p>
+
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">O que está incluído:</h3>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1rem;">
+                    {defaultFeatures.map((feature: string) => (
+                        <li style="display: flex; align-items: center; gap: 1rem; color: var(--dark); font-size: 1.1rem;">
+                            <span style="color: var(--secondary); font-weight: bold; font-size: 1.2rem;">✓</span>
+                            {feature}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+            <!-- Sidebar -->
+            <div>
+                <div class="card" style="background: var(--bg-slate); position: sticky; top: 2rem;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">As Nossas Garantias</h3>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+                        <li style="display: flex; align-items: center; gap: 0.5rem; color: var(--gray);"><span>🛡️</span> 100% Seguro</li>
+                        <li style="display: flex; align-items: center; gap: 0.5rem; color: var(--gray);"><span>🕒</span> Pontualidade Absoluta</li>
+                        <li style="display: flex; align-items: center; gap: 0.5rem; color: var(--gray);"><span>✨</span> Satisfação Garantida</li>
+                    </ul>
+
+                    <h4 style="margin-bottom: 1rem; color: var(--primary-dark);">Pronto para começar?</h4>
+                    <a href="/contacto" class="btn btn-primary" style="width: 100%; text-align: center;">Pedir Orçamento</a>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>

@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Sobre Nós | Brilho Impecável" description="Conheça a equipa por trás do melhor serviço de limpeza profissional em Portugal.">
+	<main>
+		<!-- Header Page -->
+		<section style="background: var(--primary-dark); padding: 6rem 0; color: white; text-align: center;">
+			<div class="container">
+				<h1 style="font-size: 3.5rem; margin-bottom: 1rem; color: white;">Sobre Nós</h1>
+				<p style="font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">
+					Uma equipa dedicada a trazer brilho e conforto ao seu espaço. Conheça a nossa história.
+				</p>
+			</div>
+		</section>
+
+		<!-- Content Section -->
+		<section class="container" style="padding: 6rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;">
+			<div>
+				<span class="section-label">A Nossa História</span>
+				<h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--dark);">Cuidamos do seu espaço como se fosse o nosso.</h2>
+				
+				<div style="color: #334155; font-size: 1.1rem; line-height: 1.8; display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2.5rem;">
+					<p>
+						Fundada em 2026, a <strong>Brilho Impecável</strong> nasceu com uma missão simples mas poderosa: combater o stress do dia-a-dia moderno através de serviços de limpeza da mais alta qualidade. Sabemos que o seu tempo é precioso e deve ser gasto com quem mais ama, não a esfregar pavimentos.
+					</p>
+					<p>
+						O que começou como um pequeno projeto local, cresceu rapidamente graças à nossa obsessão pelos detalhes. Empregamos métodos seguros, equipamentos topo de gama e produtos estritamente testados que não só limpam, mas revitalizam profundamente os seus espaços.
+					</p>
+					<p>
+						Acreditamos que um ambiente meticulosamente limpo não é um luxo, mas sim algo essencial para a produtividade mental, saúde física e bem-estar geral da sua família ou equipa de trabalho.
+					</p>
+				</div>
+				
+				<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+					<div>
+						<div style="font-size: 2.5rem; font-weight: 800; color: var(--primary); font-family: 'Outfit', sans-serif;">+500</div>
+						<p style="font-weight: 600; color: var(--dark);">Clientes Felizes</p>
+					</div>
+					<div>
+						<div style="font-size: 2.5rem; font-weight: 800; color: var(--secondary); font-family: 'Outfit', sans-serif;">100%</div>
+						<p style="font-weight: 600; color: var(--dark);">Garantia de Satisfação</p>
+					</div>
+				</div>
+			</div>
+			
+			<div style="position: relative;">
+				<img src="/team_cleaners_professional.png" alt="Equipa da Brilho Impecável" style="width: 100%; border-radius: 2rem; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15);" />
+				
+				<!-- Badge de Confiança -->
+				<div class="card" style="position: absolute; bottom: 30px; left: -30px; padding: 10px 20px; display: flex; align-items: center; gap: 15px;">
+					<div style="width: 50px; height: 50px; background: #dcfce7; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem;">
+						🏅
+					</div>
+					<div>
+						<p style="font-weight: 700; color: var(--dark); margin: 0;">Profissionais</p>
+						<p style="font-size: 0.8rem; color: var(--gray); margin: 0;">Certificados & Seguros</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Valores -->
+		<section style="background: white; padding: 5rem 0;">
+			<div class="container">
+				<div style="text-align: center; margin-bottom: 4rem;">
+					<h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Os Nossos Valores</h2>
+					<p style="color: var(--gray); font-size: 1.1rem;">O que nos guia todos os dias em cada limpeza.</p>
+				</div>
+				
+				<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; text-align: center;">
+					<div>
+						<div style="width: 80px; height: 80px; background: #e0f2fe; color: var(--primary-dark); font-size: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+							🛡️
+						</div>
+						<h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Confiança</h3>
+						<p style="color: var(--gray);">Equipa rigorosamente selecionada e serviços cobertos por seguro para sua paz de espírito.</p>
+					</div>
+					<div>
+						<div style="width: 80px; height: 80px; background: #dcfce7; color: var(--secondary); font-size: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+							🌱
+						</div>
+						<h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Sustentabilidade</h3>
+						<p style="color: var(--gray);">Utilizamos produtos ecológicos sempre que possível, protegendo a sua família e o planeta.</p>
+					</div>
+					<div>
+						<div style="width: 80px; height: 80px; background: #fef3c7; color: var(--accent); font-size: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+							✨
+						</div>
+						<h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Excelência</h3>
+						<p style="color: var(--gray);">Atenção obsessiva aos detalhes para garantir resultados impecáveis que nos orgulhem.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>

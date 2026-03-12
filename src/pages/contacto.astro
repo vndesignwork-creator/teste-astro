@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contacto | Pedir Orçamento de Limpeza" description="Fale connosco para obter um orçamento gratuito para os nossos serviços de limpeza profissional.">
+	<main>
+		<!-- Header Page -->
+		<section style="background: var(--primary-dark); padding: 4rem 0; color: white; text-align: center;">
+			<div class="container">
+				<h1 style="font-size: 3.5rem; margin-bottom: 1rem; color: white;">Fale Connosco</h1>
+				<p style="font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">
+					Peça o seu orçamento gratuito ou tire as suas dúvidas. A nossa equipa responderá em menos de 24 horas.
+				</p>
+			</div>
+		</section>
+
+		<!-- Content Section -->
+		<section class="container" style="padding: 6rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;">
+			<div>
+				<h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Peça um Orçamento</h2>
+				<form class="card" action="#" method="POST" style="display: flex; flex-direction: column; gap: 1.5rem;">
+					<div>
+						<label for="nome" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--dark);">Nome Completo</label>
+						<input type="text" id="nome" name="nome" required style="width: 100%; padding: 0.8rem; border: 1px solid #cbd5e1; border-radius: 0.5rem; font-family: 'Inter', sans-serif;" placeholder="O seu nome">
+					</div>
+					
+					<div>
+						<label for="email" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--dark);">Email</label>
+						<input type="email" id="email" name="email" required style="width: 100%; padding: 0.8rem; border: 1px solid #cbd5e1; border-radius: 0.5rem; font-family: 'Inter', sans-serif;" placeholder="o-seu@email.pt">
+					</div>
+					
+					<div>
+						<label for="servico" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--dark);">Tipo de Serviço</label>
+						<select id="servico" name="servico" style="width: 100%; padding: 0.8rem; border: 1px solid #cbd5e1; border-radius: 0.5rem; font-family: 'Inter', sans-serif; background: white;">
+							<option value="domestica">Limpeza Doméstica</option>
+							<option value="escritorio">Limpeza de Escritórios</option>
+							<option value="pos_obra">Limpeza Pós-Obra</option>
+							<option value="outro">Outro</option>
+						</select>
+					</div>
+
+					<div>
+						<label for="mensagem" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--dark);">Mensagem / Detalhes (Opcional)</label>
+						<textarea id="mensagem" name="mensagem" rows="4" style="width: 100%; padding: 0.8rem; border: 1px solid #cbd5e1; border-radius: 0.5rem; font-family: 'Inter', sans-serif; resize: vertical;" placeholder="Tamanho do espaço, frequência desejada..."></textarea>
+					</div>
+					
+					<button type="submit" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem; width: 100%; text-align: center;">Enviar Pedido Grátis</button>
+                    <p style="font-size: 0.8rem; color: var(--gray); text-align: center; margin-top: 0.5rem;">Os seus dados estão seguros. Não enviamos spam.</p>
+				</form>
+			</div>
+			
+			<div style="display: flex; flex-direction: column; gap: 3rem;">
+				<div>
+					<h3 style="font-size: 1.8rem; margin-bottom: 1.5rem;">Informações de Contacto</h3>
+					<div style="display: flex; flex-direction: column; gap: 1.5rem;">
+						<div style="display: flex; align-items: flex-start; gap: 1rem;">
+							<div style="font-size: 1.5rem;">📍</div>
+							<div>
+								<h4 style="font-weight: 700; margin-bottom: 0.2rem;">Sede</h4>
+								<p style="color: var(--gray);">Avenida da Liberdade, 1000<br>1050-000 Lisboa, Portugal</p>
+							</div>
+						</div>
+						<div style="display: flex; align-items: flex-start; gap: 1rem;">
+							<div style="font-size: 1.5rem;">📞</div>
+							<div>
+								<h4 style="font-weight: 700; margin-bottom: 0.2rem;">Telemóvel / Telefone</h4>
+								<p style="color: var(--gray);">+351 912 345 678<br>Disponível Segunda a Sábado</p>
+							</div>
+						</div>
+						<div style="display: flex; align-items: flex-start; gap: 1rem;">
+							<div style="font-size: 1.5rem;">✉️</div>
+							<div>
+								<h4 style="font-weight: 700; margin-bottom: 0.2rem;">Email</h4>
+								<p style="color: var(--gray);">geral@brilhoimpecavel.pt</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="card" style="background: var(--primary); color: white; border: none;">
+					<h3 style="color: white; font-size: 1.5rem; margin-bottom: 1rem;">Zona de Atuação</h3>
+					<p style="opacity: 0.9;">
+						Atuamos predominantemente na Grande Lisboa e Arredores. Para projetos comerciais maiores (como Pós-Obra ou Mega Escritórios), deslocamo-nos a nível nacional mediante agendamento.
+					</p>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>

@@ -15,12 +15,12 @@ import Layout from '../layouts/Layout.astro';
 		</section>
 
 		<!-- Content Section -->
-		<section class="container" style="padding: 6rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;">
+		<section class="container section-padding responsive-grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;">
 			<div>
 				<span class="section-label">A Nossa História</span>
-				<h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--dark);">Cuidamos do seu espaço como se fosse o nosso.</h2>
+				<h2 style="margin-bottom: 2rem; color: var(--dark);">Cuidamos do seu espaço como se fosse o nosso.</h2>
 				
-				<div style="color: #334155; font-size: 1.1rem; line-height: 1.8; display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2.5rem;">
+				<div style="color: #334155; font-size: 1.1rem; line-height: 1.8; display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 3rem;">
 					<p>
 						Fundada em 2026, a <strong>Brilho Impecável</strong> nasceu com uma missão simples mas poderosa: combater o stress do dia-a-dia moderno através de serviços de limpeza da mais alta qualidade. Sabemos que o seu tempo é precioso e deve ser gasto com quem mais ama, não a esfregar pavimentos.
 					</p>
@@ -32,7 +32,7 @@ import Layout from '../layouts/Layout.astro';
 					</p>
 				</div>
 				
-				<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+				<div style="display: flex; gap: 3rem; flex-wrap: wrap;">
 					<div>
 						<div style="font-size: 2.5rem; font-weight: 800; color: var(--primary); font-family: 'Outfit', sans-serif;">+500</div>
 						<p style="font-weight: 600; color: var(--dark);">Clientes Felizes</p>
@@ -45,15 +45,15 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 			
 			<div style="position: relative;">
-				<img src="/team_cleaners_professional.png" alt="Equipa da Brilho Impecável" style="width: 100%; border-radius: 2rem; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15);" />
+				<img src="/team_cleaners_professional.png" alt="Equipa da Brilho Impecável" style="width: 100%; border-radius: 2.5rem; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15);" />
 				
 				<!-- Badge de Confiança -->
-				<div class="card" style="position: absolute; bottom: 30px; left: -30px; padding: 10px 20px; display: flex; align-items: center; gap: 15px;">
-					<div style="width: 50px; height: 50px; background: #dcfce7; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem;">
+				<div class="card" style="position: absolute; bottom: 30px; left: -20px; padding: 1rem 2rem; display: flex; flex-direction: row; align-items: center; gap: 1rem; width: auto; height: auto;">
+					<div style="width: 50px; height: 50px; background: #dcfce7; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; flex-shrink: 0;">
 						🏅
 					</div>
 					<div>
-						<p style="font-weight: 700; color: var(--dark); margin: 0;">Profissionais</p>
+						<p style="font-weight: 700; color: var(--dark); margin: 0; line-height: 1.2;">Profissionais</p>
 						<p style="font-size: 0.8rem; color: var(--gray); margin: 0;">Certificados & Seguros</p>
 					</div>
 				</div>
@@ -68,7 +68,7 @@ import Layout from '../layouts/Layout.astro';
 					<p style="color: var(--gray); font-size: 1.1rem;">O que nos guia todos os dias em cada limpeza.</p>
 				</div>
 				
-				<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; text-align: center;">
+				<div class="values-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; text-align: center;">
 					<div>
 						<div style="width: 80px; height: 80px; background: #e0f2fe; color: var(--primary-dark); font-size: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
 							🛡️
@@ -93,5 +93,14 @@ import Layout from '../layouts/Layout.astro';
 				</div>
 			</div>
 		</section>
+
+		<style>
+			@media (max-width: 768px) {
+				.values-grid {
+					grid-template-columns: 1fr !important;
+					gap: 3rem !important;
+				}
+			}
+		</style>
 	</main>
 </Layout>

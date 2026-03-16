@@ -21,40 +21,45 @@ const { post } = Astro.props;
 // Função para garantir que temos um URL de imagem válido
 const getImageUrl = (imageSource: string) => {
 	if (!imageSource) return '/office_cleaning_service.png';
+    
+    // Se for um link externo completo (http)
     if (imageSource.startsWith('http')) {
-        const isActuallyAPage = imageSource.includes('.htm');
-        return isActuallyAPage ? '/office_cleaning_service.png' : imageSource;
+        return imageSource.includes('.htm') ? '/office_cleaning_service.png' : imageSource;
     }
-	return `${DIRECTUS_URL}/assets/${imageSource}`;
+
+    // Se for um ID do Directus
+    const baseUrl = DIRECTUS_URL.endsWith('/') ? DIRECTUS_URL.slice(0, -1) : DIRECTUS_URL;
+	return `${baseUrl}/assets/${imageSource}`;
 };
+
 ---
 
 <Layout title={`${post.title} | Blog Brilho Impecável`} description={post.excerpt}>
 	<main>
 		<!-- Cabeçalho do Artigo -->
-		<section class="section-padding" style="position: relative; overflow: hidden; color: white;">
+		<section class="section-padding" style="position: relative; overflow: hidden; color: white; padding: 8rem 0 10rem;">
             <!-- Fundo Escurecido com Imagem Principal -->
             <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;">
-                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.95)); z-index: 1;"></div>
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)); z-index: 1;"></div>
                 <img src={getImageUrl(post.image_url)} alt={post.title} style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
 
-			<div class="container" style="position: relative; z-index: 2; max-width: 800px; text-align: center;">
-                <div style="display: inline-block; padding: 0.5rem 1.5rem; background: var(--primary); color: white; border-radius: 2rem; font-weight: 700; font-size: 0.875rem; text-transform: uppercase; margin-bottom: 1.5rem; letter-spacing: 0.05em;">
+			<div class="container" style="position: relative; z-index: 2; max-width: 900px; text-align: center;">
+                <div style="display: inline-block; padding: 0.6rem 1.8rem; background: var(--primary); color: white; border-radius: 2rem; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 2rem; letter-spacing: 0.05em;">
                     {post.category}
                 </div>
-				<h1 style="font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.2; color: white;">{post.title}</h1>
-				<div class="mobile-stack" style="display: flex; justify-content: center; align-items: center; gap: 1rem; color: #cbd5e1; font-size: 1.1rem;">
+				<h1 style="font-size: 3.5rem; margin-bottom: 2rem; line-height: 1.2; color: white;">{post.title}</h1>
+				<div class="mobile-stack" style="display: flex; justify-content: center; align-items: center; gap: 1.5rem; color: #e2e8f0; font-size: 1.1rem;">
 					<span>📍 Brilho Impecável Editor</span>
-                    <span>•</span>
+                    <span class="mobile-hide">•</span>
                     <span>🗓️ {post.date}</span>
 				</div>
 			</div>
 		</section>
 
 		<!-- Conteúdo do Artigo -->
-		<section class="container" style="padding: 2rem 0 4rem;">
-            <div class="card" style="max-width: 800px; margin: 0 auto; position: relative; z-index: 10; padding: 2rem;">
+		<section class="container" style="padding: 0 0 6rem; margin-top: -4rem;">
+            <div class="card" style="max-width: 900px; margin: 0 auto; position: relative; z-index: 10; padding: 3.5rem;">
                 <div 
                     style="font-size: 1.15rem; color: #334155; line-height: 1.9;" 
                     set:html={post.content} 

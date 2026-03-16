@@ -32,6 +32,14 @@ if (!currentService) {
     return Astro.redirect('/#servicos');
 }
 
+const getImageUrl = (imageSource: string) => {
+	if (!imageSource) return null;
+    const baseUrl = import.meta.env.DIRECTUS_URL?.endsWith('/') 
+        ? import.meta.env.DIRECTUS_URL.slice(0, -1) 
+        : import.meta.env.DIRECTUS_URL;
+	return `${baseUrl}/assets/${imageSource}`;
+};
+
 // Nota: Como no Directus neste momento não criámos o campo de "features" (lista), 
 // vamos usar uma lista genérica de qualidade ou apenas mostrar a descrição.
 const defaultFeatures = [
@@ -48,9 +56,10 @@ const defaultFeatures = [
 		<!-- Header Page -->
 		<section style="background: var(--primary-dark); padding: 5rem 0; color: white;">
 			<div class="container" style="display: flex; gap: 2rem; align-items: center;">
-                <div style="font-size: 5rem; background: rgba(255,255,255,0.1); width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; border-radius: 1.5rem;">
+                <div style="font-size: 5rem; background: rgba(255,255,255,0.1); width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; border-radius: 1.5rem; backdrop-filter: blur(10px);">
                     {currentService.icon}
                 </div>
+
                 <div>
                     <h1 style="font-size: 3rem; margin-bottom: 0.5rem; color: white;">{currentService.title}</h1>
                     <p style="font-size: 1.2rem; opacity: 0.9;">Solução especializada e à sua medida.</p>

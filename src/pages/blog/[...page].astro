@@ -18,22 +18,27 @@ const { page } = Astro.props;
 // Função para garantir que temos um URL de imagem válido
 const getImageUrl = (imageSource: string) => {
 	if (!imageSource) return '/blog_dicas.png';
-    // Se for um link externo, verificamos se parece uma imagem (não termina em .htm ou .html)
+    
+    // Se for um link externo completo (http), usamos como está
 	if (imageSource.startsWith('http')) {
-        const isActuallyAPage = imageSource.includes('.htm');
-        return isActuallyAPage ? '/blog_dicas.png' : imageSource;
+        return imageSource.includes('.htm') ? '/blog_dicas.png' : imageSource;
     }
-	return `${DIRECTUS_URL}/assets/${imageSource}`;
+
+    // Se for um ID do Directus, construímos o URL correto
+    // Removemos qualquer barra no final do URL base para evitar barras duplas
+    const baseUrl = DIRECTUS_URL.endsWith('/') ? DIRECTUS_URL.slice(0, -1) : DIRECTUS_URL;
+	return `${baseUrl}/assets/${imageSource}`;
 };
+
 ---
 
 <Layout title={`Blog de Limpeza | Página ${page.currentPage} | Brilho Impecável`} description="Dicas, guias e novidades sobre o mundo da limpeza profissional e organização do lar.">
 	<main>
 		<!-- Header Page -->
-		<section class="section-padding" style="background: var(--primary-dark); color: white; text-align: center;">
+		<section class="section-padding" style="background: var(--primary-dark); color: white; text-align: center; padding: 6rem 0 8rem;">
 			<div class="container">
-				<h1 style="font-size: 2.5rem; margin-bottom: 1rem; color: white;">Blog da Limpeza</h1>
-				<p style="font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">
+				<h1 style="font-size: 3.5rem; margin-bottom: 2rem; color: white;">Blog da Limpeza</h1>
+				<p style="font-size: 1.25rem; opacity: 0.9; max-width: 700px; margin: 0 auto; line-height: 1.6;">
 					Dicas práticas, guias de organização e tudo o que precisa de saber para viver num ambiente verdadeiramente impecável.
 				</p>
 			</div>

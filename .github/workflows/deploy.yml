@@ -1,0 +1,17 @@
+name: Deploy para Coolify
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Disparar Deploy no Coolify
+        run: |
+          curl -X GET \
+            "http://187.124.39.245:8000/api/v1/deploy?uuid=toha0br8xhup9q8444bpvtz9&force=false" \
+            -H "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}" \
+            -H "Content-Type: application/json"
